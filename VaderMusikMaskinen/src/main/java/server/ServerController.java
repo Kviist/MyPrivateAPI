@@ -1,6 +1,7 @@
 package server;
 
 import api.*;
+import com.wrapper.spotify.models.Playlist;
 import dataclasses.*;
 
 import java.util.HashMap;
@@ -78,7 +79,8 @@ public class ServerController {
 		return "";
 	}
 
-	public String getPlaylistName(String playListId){
+	public Playlist getPlaylistName(String playListId){
+
 		return spotifyData.getPlaylistName();
 	}
 

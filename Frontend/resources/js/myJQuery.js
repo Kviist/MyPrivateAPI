@@ -1,3 +1,4 @@
+var tracks;
 function sendALocation(location){
      $.ajax({
         method: "GET",
@@ -14,7 +15,10 @@ function getPlaylistName(weather){
         method: "GET",
         url: "http://127.0.0.1:7313/playlistName/" + weather,
     }).done(function(response){
-         $('.current-playlist').text(response);
+         var playlist = JSON.parse(response);
+         $('.current-playlist').text(playlist['name']);
+         console.log('https://open.spotify.com/embed?uri=' + playlist['uri']);
+         $('.player').attr('src','https://open.spotify.com/embed?uri=' + playlist['uri']);
      });
     
 }
@@ -24,13 +28,14 @@ function getTracks(weather){
         url: "http://127.0.0.1:7313/tracks/" + weather,
     }).done(function(data){
          var list = JSON.parse(data);
+         tracks = list;
          var frontEndList = $('.songs');
          
          for(var i = 0; i < list.length; i++){
              html = '<li id="song_' + i + '"><i>' + list[i]['name'] + '</i> - ' + list[i]['artists'] + '</li>';
-    
              frontEndList.append(html);
          }
+         
      });
     
 }

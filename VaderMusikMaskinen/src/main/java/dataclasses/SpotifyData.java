@@ -19,8 +19,8 @@ public class SpotifyData {
         this.playlist = playlist;
     }
 
-    public String getPlaylistName(){
-        return playlist.getName();
+    public Playlist getPlaylistName(){
+        return playlist;
     }
 
     public List<Track> getTracks(){
@@ -32,6 +32,7 @@ public class SpotifyData {
             String[] artistArray = new String[artists.size()];
             Track newTrack = new Track();
             newTrack.setName(tracks.get(i).getTrack().getName());
+            newTrack.setid(tracks.get(i).getTrack().getId());
             for(int j = 0; j < artists.size(); j++){
                 artistArray[j] = artists.get(j).getName();
             }

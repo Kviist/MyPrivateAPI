@@ -3,6 +3,7 @@ package server;
 import api.MusixMatchAPIClient;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.wrapper.spotify.models.Playlist;
 import dataclasses.Track;
 import spark.Response;
 import spark.Spark.*;
@@ -48,8 +49,13 @@ public class ServerMain {
 		get(playlistName, (request, response) -> {
 			String weather = request.params(":weather");
 			controller.fetchPlaylistByWeather(weather);
-			String res = controller.getPlaylistName(weather);
-			return res;
+			Playlist res = controller.getPlaylistName(weather);
+			Gson gson = new Gson();
+			Type type = new TypeToken<Playlist>() {}.getType();
+			String json = gson.toJson(res, type);
+			System.out.println(json);
+			return json;
+
 		});
 
 		get(tracks, (request, response) -> {

@@ -26,4 +26,6 @@ function getAWeather(location){
 
 $(document).ready(function(){
     $('.list-of-songs').fadeIn(1000).removeClass('hidden'); 
+    
+
 });

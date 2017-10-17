@@ -6,6 +6,7 @@ package dataclasses;
 public class Track{
     private String name;
     private String[] artists;
+    private String id;
 
     public void setName(String name){
         this.name = name;
@@ -13,6 +14,10 @@ public class Track{
 
     public void setArtists(String[] artists){
         this.artists = artists;
+    }
+
+    public void setid(String id){
+        this.id = id;
     }
 
     public String getName(){

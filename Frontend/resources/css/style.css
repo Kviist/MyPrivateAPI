@@ -186,7 +186,7 @@ p{
 
 .weather-description{
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 10%;
     font-weight: 100;
     font-size: 70%;
@@ -201,7 +201,7 @@ p{
 
 .playlist-descriptiion{
     position: absolute;
-    top:21%;
+    top:27%;
     left: 10%;
     font-weight: 100;
     font-size: 70%;
@@ -238,6 +238,11 @@ p{
    color: #e67e22;
 }
 
+.player{
+    position: absolute;
+    left: 50%;
+    top: 22%;
+}
 
 
 
