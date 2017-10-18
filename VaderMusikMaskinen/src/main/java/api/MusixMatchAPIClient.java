@@ -94,7 +94,6 @@ public class MusixMatchAPIClient {
 			for(int i=0; i<split.length; i++) {
 				temp += (split[i] + "<br>");
 			}
-			
     	    return temp; 
 		} catch (MusixMatchException e) {
 			e.printStackTrace();
@@ -109,9 +108,11 @@ public class MusixMatchAPIClient {
     	trackName = JOptionPane.showInputDialog("Skriv in låtnamn: ");
     	artistName = JOptionPane.showInputDialog("Skriv in artistnamn: ");
     	trackID = api.searchForSongReturnTrackID(trackName, artistName);
-    	System.out.println(api.getSongWithTrackID(trackID));
-    	System.out.println(api.getArtistWithTrackID(trackID));
-    	System.out.println(api.getAlbumWithTrackID(trackID));
-    	System.out.println(api.getLyricsWithTrackID(trackID));
+//    	System.out.println(api.getSongWithTrackID(trackID));
+//    	System.out.println(api.getArtistWithTrackID(trackID));
+//    	System.out.println(api.getAlbumWithTrackID(trackID));
+//    	System.out.println(api.getLyricsWithTrackID(trackID));
+    	System.out.println(api.toString(trackID));
+    	
     }
 }

@@ -14,18 +14,19 @@ import java.util.List;
  */
 
 public class ServerController {
-	private final String[] weatherTranslator =  {"KLART","KLART","HALVMULET","HALVMULET","MOLNIGT","MOLNIGT","DIMMA" +
-											"REGN","REGN","KRAFTIGT REGN","ÅSKA","SNÖBLANDAT REGN","SNÖBLANDAT REGN","SLASK" +
-											"GANSKA JULIGT", "GANSKA JULIGT","ULTRA JULIGT","REGN","REGN","KRAFTIGT REGN","ÅSKA" +
+	private final String[] weatherTranslator =  {"KLART","KLART","HALVMULET","HALVMULET","MOLNIGT","MOLNIGT","DIMMA",
+											"REGN","REGN","KRAFTIGT REGN","ÅSKA","SNÖBLANDAT REGN","SNÖBLANDAT REGN","SLASK" ,
+											"GANSKA JULIGT", "GANSKA JULIGT","ULTRA JULIGT","REGN","REGN","KRAFTIGT REGN","ÅSKA",
 											"SNÖBLANDAT REGN","SNÖBLANDAT REGN","SLASK","GANSKA JULIGT","ULTRA JULIGT"};
 	private SpotifyData spotifyData;
 	private SpotifyApiClient spotifyClient;
 	private PlaylistID pid;
+	private MusixMatchAPIClient musixClient;
 
 	public ServerController() {
 		spotifyClient = new SpotifyApiClient();
 		pid =  new PlaylistID();
-
+		musixClient = new MusixMatchAPIClient();
 	}
 
 	//Private method for translating weather symbol to a string
@@ -75,8 +76,9 @@ public class ServerController {
 		return res;
 	}
 
-	public String getLyrics(){
-		return "";
+	public String getLyricsWithSongNameAndAristName(String songName, String artistName){
+		int trackID = musixClient.searchForSongReturnTrackID(songName, artistName);
+		return musixClient.toString(trackID);
 	}
 
 	public Playlist getPlaylistName(String playListId){

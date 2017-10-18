@@ -32,12 +32,27 @@ function getTracks(weather){
          var frontEndList = $('.songs');
          
          for(var i = 0; i < list.length; i++){
-             html = '<li id="song_' + i + '"><i>' + list[i]['name'] + '</i> - ' + list[i]['artists'] + '</li>';
+             html = '<li id="song_' + i + '"><a href="#"><i>' + list[i]['name'] + '</i> -- ' + list[i]['artists'] + '</a></li>';
              frontEndList.append(html);
          }
-         
+        
+         $('.songs li').click(function(e){
+             console.log($(this).text());
+             getLyrics($(this).text());
+             
+    });
      });
     
+}
+function getLyrics(songArtistName){
+   $.ajax({
+    method: "GET",
+    url: "http://127.0.0.1:7313/lyrics/" + songArtistName,
+    }).done(function(response){
+        $('.lyrics').text("");
+        $('.lyrics').append(response);
+        
+    });
 }
 
 
@@ -60,8 +75,7 @@ $(document).ready(function(){
         sendALocation($('#search').val());
         $('header').load('ListPage.html');
     }
-});
-    
+    });
 });
 
 
